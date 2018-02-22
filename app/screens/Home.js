@@ -1,17 +1,49 @@
 import React from 'react';
-import EStyleSheet from 'react-native-extended-stylesheet';
 import { StatusBar } from 'react-native';
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
+import { InputWithButton } from '../components/TextInput';
 
-EStyleSheet.build({
-  $primaryBlue: '#4F6D7A',
-  $white: '#fff',
-});
+const TEMP_BASE_CURRENCY = 'USD';
+const TEMP_QUOTE_CURRENCY = 'GBP';
+const TEMP_BASE_PRICE = '100';
+const TEMP_QUOTE_PRICE = '79.74';
 
-export default () => (
-  <Container>
-    <StatusBar translucent={false} barStyle="light-content" />
-    <Logo />
-  </Container>
-);
+class Home extends React.Component {
+  handlePressBaseCurrency = () => {
+    console.log('Press Base');
+  };
+
+  handlePressQuoteCurrency = () => {
+    console.log('Press Quote');
+  };
+
+  handleTextChange = (text) => {
+    console.log('change text', text);
+  };
+
+  render() {
+    return (
+      <Container>
+        <StatusBar translucent={false} barStyle="light-content" />
+        <Logo />
+        <InputWithButton
+          buttonText={TEMP_BASE_CURRENCY}
+          onPress={this.handlePressBaseCurrency}
+          defaultValue={TEMP_BASE_PRICE}
+          keyboardType="numeric"
+          onChangeText={this.handleTextChange}
+          editable
+        />
+        <InputWithButton
+          buttonText={TEMP_QUOTE_CURRENCY}
+          onPress={this.handlePressQuoteCurrency}
+          defaultValue={TEMP_QUOTE_PRICE}
+          editable={false}
+        />
+      </Container>
+    );
+  }
+}
+
+export default Home;
