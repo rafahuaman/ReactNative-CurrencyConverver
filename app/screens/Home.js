@@ -7,6 +7,7 @@ import { InputWithButton } from '../components/TextInput';
 import { ClearButton } from '../components/Buttons';
 import { LastConverted } from '../components/Text';
 import { Header } from '../components/Header';
+import { swapCurrency, changeCurrencyAmount } from '../actions/currencies';
 
 const TEMP_BASE_CURRENCY = 'USD';
 const TEMP_QUOTE_CURRENCY = 'GBP';
@@ -26,11 +27,11 @@ class Home extends React.Component {
   };
 
   handleTextChange = (text) => {
-    console.log('change text', text);
+    console.log(changeCurrencyAmount(text));
   };
 
   handleSwapCurrency = () => {
-    console.log('Press Swap Currency');
+    console.log(swapCurrency());
   };
 
   handleOptionsPress = () => {
