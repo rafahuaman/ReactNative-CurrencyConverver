@@ -2,6 +2,8 @@ import { StackNavigator } from 'react-navigation';
 
 import Home from '../screens/Home';
 import CurrencyList from '../screens/CurrencyList';
+import Options from '../screens/Options';
+import Themes from '../screens/Themes';
 
 export default StackNavigator(
   {
@@ -16,6 +18,18 @@ export default StackNavigator(
       navigationOptions: ({ navigation }) => ({
         headerTitle: navigation.state.params.title,
       }),
+    },
+    Options: {
+      screen: Options,
+      navigationOptions: {
+        headerTitle: 'Options',
+      },
+    },
+    Themes: {
+      screen: Themes,
+      navigationOptions: {
+        headerTitle: 'Themes',
+      },
     },
   },
   { mode: 'modal' },
