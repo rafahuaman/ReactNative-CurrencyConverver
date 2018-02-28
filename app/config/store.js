@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 
 import {
   createReduxBoundAddListener,
@@ -7,8 +8,14 @@ import {
 } from 'react-navigation-redux-helpers';
 
 import reducers from '../reducers';
+import rootSaga from '../config/sagas';
 
-const middlewares = [createReactNavigationReduxMiddleware('root', state => state.nav)];
+const sagaMiddleware = createSagaMiddleware();
+
+const middlewares = [
+  createReactNavigationReduxMiddleware('root', state => state.nav),
+  sagaMiddleware,
+];
 export const addListener = createReduxBoundAddListener('root');
 
 if (process.env.NODE_ENV === 'development') {
@@ -16,3 +23,5 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const store = createStore(reducers, applyMiddleware(...middlewares));
+
+sagaMiddleware.run(rootSaga);
