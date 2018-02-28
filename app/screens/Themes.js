@@ -46,7 +46,7 @@ class Themes extends React.Component {
         <Separator />
         <ListItem
           text="green"
-          onPress={() => this.handleThemePress(styles.green)}
+          onPress={() => this.handleThemePress(styles.$green)}
           selected
           checkmark={false}
           iconBackground={styles.$green}
